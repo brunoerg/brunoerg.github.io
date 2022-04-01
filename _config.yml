@@ -1,1 +1,9 @@
-theme: jekyll-theme-hacker
+remote_theme: pages-themes/hacker@v0.2.0
+plugins:
+- jekyll-remote-theme
+
+title: [Bruno Garcia]
+description: [Bitcoin stuff]
+ 
+ 
+  # add this line to the plugins list if you already have one
