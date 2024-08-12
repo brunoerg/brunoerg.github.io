@@ -16,7 +16,7 @@ However, `bitcoinfuzz` had only support for `libfuzzer` and, at some point, hax0
 
 #### Why the issue was not discovered before?
 
-Both `rust-bitcoin` and `rust-miniscript` support for fuzzing. Also, `rust-miniscript` has two targets called `roundtrip_miniscript_str` and `roundtrip_miniscript_script` which should be able to find this. However, the effectiveness of fuzzing depends on large campaigns, it would be good with both projects were continuously fuzzed.
+Both `rust-bitcoin` and `rust-miniscript` support fuzzing. Also, `rust-miniscript` has two targets called `roundtrip_miniscript_str` and `roundtrip_miniscript_script` which should be able to find this. However, the effectiveness of fuzzing depends on large campaigns, that is why it is important that both projects are continually fuzzed.
 
 ### Timeline
 
