@@ -1,6 +1,6 @@
 ## `rust-miniscript` vulnerability disclosure (DoS/Stack Overflow)
 
-On 2nd July, we ([hax0kartik](https://github.com/hax0kartik) and I) reported a stack overflow issue on rust-miniscript to Andrew Poelstra. We discovered that rust-miniscript could stack overflow when parsing a miniscript from a string due to a recursion. From our conversations, the reason was that the constant `MAX_RECURSION_DEPTH` was not being applied to prefix combinators like `n:`. It means the parser would take these "large" miniscripts and (iteratively) construct a tree with a very high depth. Then, this will stack overflow when doing any recursive operation. All the miniscript websites that help visualize/parse miniscript using `rust-miniscript` could crash with this input.
+On 2nd July, we (Kartik Agarwala [hax0kartik](https://github.com/hax0kartik) and I) reported a stack overflow issue on rust-miniscript to Andrew Poelstra. We discovered that rust-miniscript could stack overflow when parsing a miniscript from a string due to a recursion. From our conversations, the reason was that the constant `MAX_RECURSION_DEPTH` was not being applied to prefix combinators like `n:`. It means the parser would take these "large" miniscripts and (iteratively) construct a tree with a very high depth. Then, this will stack overflow when doing any recursive operation. All the miniscript websites that help visualize/parse miniscript using `rust-miniscript` could crash with this input.
 
 Affects: `rust-miniscript` 9, 10, 11 and 12.
 
@@ -35,4 +35,4 @@ We have found **MANY** bugs with bitcoinfuzz, and we have carefully analyzed all
 
 ### Acknowledgements
 
-I would like to first thank hax0kartik for working with me on this project. hax0kartik is a Summer of Bitcoin intern and he has done a brillant work. Also, thanks Andrew and Sanket for the cooperation on it and other cases.
+I would like to first thank Kartik Agarwala for working with me on this project. hax0kartik is a Summer of Bitcoin intern and he has done a brillant work. Also, thanks Andrew and Sanket for the cooperation on it and other cases.
