@@ -27,7 +27,7 @@ Both `rust-bitcoin` and `rust-miniscript` support fuzzing. Also, `rust-miniscrip
 **07/18/2024** - Andrew discovered that the issue could also affect parsing Miniscripts from Script. \
 **07/18/2024** - Sanket started working on a fix for it. \
 **07/20/2024** - Sanket opened a PR addressing it. \
-**08/06/2024** - I verified that all fixes were backported. Andrew and Sanket confirmed this, and we proceeded to have a CVE. \
+**08/06/2024** - I verified that all fixes were backported. Andrew and Sanket confirmed this, and we proceeded to have a CVE.
 
 ### Responsible Disclosure
 
