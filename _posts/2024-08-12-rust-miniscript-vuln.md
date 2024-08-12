@@ -1,6 +1,6 @@
 ## `rust-miniscript` vulnerability disclosure (DoS/Stack Overflow)
 
-On 2nd July, we (Kartik Agarwala [hax0kartik](https://github.com/hax0kartik) and I) reported a stack overflow issue on rust-miniscript to Andrew Poelstra. We discovered that rust-miniscript could stack overflow when parsing a miniscript from a string due to a recursion. From our conversations, the reason was that the constant `MAX_RECURSION_DEPTH` was not being applied to prefix combinators like `n:`. It means the parser would take these "large" miniscripts and (iteratively) construct a tree with a very high depth. Then, this will stack overflow when doing any recursive operation. All the miniscript websites that help visualize/parse miniscript using `rust-miniscript` could crash with this input.
+On 2nd July, we (Kartik Agarwala ([hax0kartik](https://github.com/hax0kartik)) and I) reported a stack overflow issue on rust-miniscript to Andrew Poelstra. We discovered that rust-miniscript could stack overflow when parsing a miniscript from a string due to a recursion. From our conversations, the reason was that the constant `MAX_RECURSION_DEPTH` was not being applied to prefix combinators like `n:`. It means the parser would take these "large" miniscripts and (iteratively) construct a tree with a very high depth. Then, this will stack overflow when doing any recursive operation. All the miniscript websites that help visualize/parse miniscript using `rust-miniscript` could crash with this input.
 
 Affects: `rust-miniscript` 9, 10, 11 and 12.
 
@@ -12,7 +12,7 @@ Affects: `rust-miniscript` 9, 10, 11 and 12.
 
 [Bitcoinfuzz](https://github.com/brunoerg/bitcoinfuzz) is a project that applies differential fuzzing in Bitcoin implementations and libraries. One of the targets does differential fuzzing with `rust-miniscript` and `Bitcoin Core` for parsing a miniscript from a string. So far, it found some bugs and has been helpful.
 
-However, `bitcoinfuzz` had only support for `libfuzzer` and, at some point, hax0kartik suggested using some structures from `Bitcoin Core` to add support for more fuzzers in `bitcoinfuzz`. So, we started using `bitcoinfuzz` with AFL and, even fuzzing for a long time with libfuzzer, this bug was found in a few minutes with AFL. Just luck? We don't know haha.
+However, `bitcoinfuzz` had only support for `libfuzzer` and, at some point, Kartik suggested using some structures from `Bitcoin Core` to add support for more fuzzers in `bitcoinfuzz`. So, we started using `bitcoinfuzz` with AFL and, even fuzzing for a long time with libfuzzer, this bug was found in a few minutes with AFL. Just luck? We don't know haha.
 
 #### Why the issue was not discovered before?
 
@@ -35,4 +35,4 @@ We have found **MANY** bugs with bitcoinfuzz, and we have carefully analyzed all
 
 ### Acknowledgements
 
-I would like to first thank Kartik Agarwala for working with me on this project. hax0kartik is a Summer of Bitcoin intern and he has done a brillant work. Also, thanks Andrew and Sanket for the cooperation on it and other cases.
+I would like to first thank Kartik Agarwala for working with me on this project. Kartik is a Summer of Bitcoin intern and he has done a brillant work. Also, thanks Andrew and Sanket for the cooperation on it and other cases.
