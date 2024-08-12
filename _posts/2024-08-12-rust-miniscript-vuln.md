@@ -10,7 +10,7 @@ Affects: `rust-miniscript` 9, 10, 11 and 12.
 
 **TL;DR: Fuzzing**
 
-Bitcoinfuzz is a project that applies differential fuzzing in Bitcoin implementations and libraries. One of the targets does differential fuzzing with `rust-miniscript` and `Bitcoin Core` for parsing a miniscript from a string. So far, it found some bugs and has been helpful.
+[Bitcoinfuzz](https://github.com/brunoerg/bitcoinfuzz) is a project that applies differential fuzzing in Bitcoin implementations and libraries. One of the targets does differential fuzzing with `rust-miniscript` and `Bitcoin Core` for parsing a miniscript from a string. So far, it found some bugs and has been helpful.
 
 However, `bitcoinfuzz` had only support for `libfuzzer` and, at some point, hax0kartik suggested using some structures from `Bitcoin Core` to add support for more fuzzers in `bitcoinfuzz`. So, we started using `bitcoinfuzz` with AFL and, even fuzzing for a long time with libfuzzer, this bug was found in a few minutes with AFL. Just luck? We don't know haha.
 
@@ -20,14 +20,14 @@ Both `rust-bitcoin` and `rust-miniscript` support for fuzzing. Also, `rust-minis
 
 ### Timeline
 
-**07/02/2024** - Reported the issue to Andrew Poelstra via e-mail.
-**07/02/2024** - Andrew confirmed the issue and cc'ed Sanket.
-**07/08/2024** - Sanket reproduced the issue and opened a PR addressing it.
-**07/08/2024** - I tested and confirmed the fix.
-**07/18/2024** - Andrew discovered that the issue could also affect parsing Miniscripts from Script.
-**07/18/2024** - Sanket started working on a fix for it.
-**07/20/2024** - Sanket opened a PR addressing it.
-**08/06/2024** - I verified that all fixes were backported. Andrew and Sanket confirmed this, and we proceeded to have a CVE.
+**07/02/2024** - Reported the issue to Andrew Poelstra via e-mail. \
+**07/02/2024** - Andrew confirmed the issue and cc'ed Sanket. \
+**07/08/2024** - Sanket reproduced the issue and opened a PR addressing it. \
+**07/08/2024** - I tested and confirmed the fix. \
+**07/18/2024** - Andrew discovered that the issue could also affect parsing Miniscripts from Script. \
+**07/18/2024** - Sanket started working on a fix for it. \
+**07/20/2024** - Sanket opened a PR addressing it. \
+**08/06/2024** - I verified that all fixes were backported. Andrew and Sanket confirmed this, and we proceeded to have a CVE. \
 
 ### Responsible Disclosure
 
