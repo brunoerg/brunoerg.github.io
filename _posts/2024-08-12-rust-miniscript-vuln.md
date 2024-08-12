@@ -1,6 +1,6 @@
 ## `rust-miniscript` vulnerability disclosure (DoS/Stack Overflow)
 
-On 2nd July, we (I and [hax0kartik](https://github.com/hax0kartik)) reported a stack overflow issue on rust-miniscript to Andrew Poelstra. We discovered that rust-miniscript could stack overflow when parsing a miniscript from a string due to a recursion. From our conversations, the reason was that the constant `MAX_RECURSION_DEPTH` was not being applied to prefix combinators like `n:`. It means the parser would take these "large" miniscripts and (iteratively) construct a tree with a very high depth. Then, this will stack overflow when doing any recursive operation. All the miniscript websites that help visualize/parse miniscript using `rust-miniscript` could crash with this input.
+On 2nd July, we ([hax0kartik](https://github.com/hax0kartik) and I) reported a stack overflow issue on rust-miniscript to Andrew Poelstra. We discovered that rust-miniscript could stack overflow when parsing a miniscript from a string due to a recursion. From our conversations, the reason was that the constant `MAX_RECURSION_DEPTH` was not being applied to prefix combinators like `n:`. It means the parser would take these "large" miniscripts and (iteratively) construct a tree with a very high depth. Then, this will stack overflow when doing any recursive operation. All the miniscript websites that help visualize/parse miniscript using `rust-miniscript` could crash with this input.
 
 Affects: `rust-miniscript` 9, 10, 11 and 12.
 
@@ -16,7 +16,7 @@ However, `bitcoinfuzz` had only support for `libfuzzer` and, at some point, hax0
 
 #### Why the issue was not discovered before?
 
-Both `rust-bitcoin` and `rust-miniscript` support for fuzzing. Also, `rust-miniscript` has two targets called `roundtrip_miniscript_str` and `roundtrip_miniscript_script` which should be able to find this. However, the effectiveness of fuzzing depends on large campaigns, it would be good with both projects were contiously fuzzed.
+Both `rust-bitcoin` and `rust-miniscript` support for fuzzing. Also, `rust-miniscript` has two targets called `roundtrip_miniscript_str` and `roundtrip_miniscript_script` which should be able to find this. However, the effectiveness of fuzzing depends on large campaigns, it would be good with both projects were continuously fuzzed.
 
 ### Timeline
 
