@@ -1,1 +1,1 @@
-Bitcoin, P2P networks, software engineering, security and QA stuff.
+Bitcoin, peer-to-peer networks and software engineering.
