@@ -1,6 +1,6 @@
 # The state of Bitcoinfuzz
 
-*bitcoinfuzz* is a project that does differential fuzzing of Bitcoin protocol implementations and libraries. I originally created it as an experiment, and the first version was quite rough with a poor design.
+**bitcoinfuzz** is a project that does differential fuzzing of Bitcoin protocol implementations and libraries. I originally created it as an experiment, and the first version was quite rough with a poor design.
 As the project started gaining attention, I refactored it to follow a modular approach similar to cryptofuzz. It means that you can choose which projects you want to fuzz, and you can build the projects (we call modules) individually.
 
 The first targets that I wrote were descriptor and miniscript parsers, where we found many bugs. The first one we reported was in sipa's miniscript implementation, which incorrectly considered `pk()()` as a valid policy because it identifies `)(` as the name. Currently, we have many other targets like: script evaluation, descriptor parse, miniscript parse, addrv2, psbt, address parse, and others. We plan to expand and work on additional targets in the near future.
@@ -24,7 +24,7 @@ We currently integrate and support the following projects:
 - Eclair - Scala
 - lightning-kmp - Kotlin
 
-There is a PR (under review) that integrates libbitcoin. We welcome any PR that integrates more projects into bitcoinfuzz. However, we intend to review the support of some implementations since an immature implementation can hinder differential fuzzing with simple issues. For example, Embit’s miniscript/descriptor implementation is still incomplete, withmany fragments not supported. We also experimented with Mako support, but decided to remove it because the project is not currently being maintained.
+There is a PR (under review) that integrates libbitcoin. We welcome any PR that integrates more projects into bitcoinfuzz. However, we intend to review the support of some implementations since an immature implementation can hinder differential fuzzing with simple issues. For example, Embit’s miniscript/descriptor implementation is still incomplete, with many fragments not supported. We also experimented with Mako support, but decided to remove it because the project is not currently being maintained.
 
 ## Lightning Network on Bitcoinfuzz
 
@@ -58,4 +58,4 @@ We created a repository where we share some corpora for our fuzzing targets, sim
 
 ## Future work
 
-We have many things in mind to work on. In the short term, we intend to expand bitcoinfuzz to make it “agnostic” and work with additional fuzzing engines besides libfuzzer;  we intend to add more targets - e.g. BOLT8, BOLT7, BOLT4 and ElligatorSwift encoding/decoding; and we have a strong need to improve our build system, especially fixing the link issues.
+We have several directions we’re eager to explore. In the short term, our focus is on expanding bitcoinfuzz to be fully agnostic and compatible with multiple fuzzing engines beyond libFuzzer. We also plan to introduce new fuzzing targets—such as BOLT8, BOLT7, BOLT4 and ElligatorSwift/V2 Transport — and to strengthen our build system, with a particular emphasis on resolving linking issues.
