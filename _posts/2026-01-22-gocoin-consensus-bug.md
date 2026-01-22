@@ -34,7 +34,7 @@ As can be seen, it was using `pop` to get the element instead of using `popInt`,
 
 --------------------------------------
 
-Thanks Piotr Narewski for responding to my report and fixing the bug so quickly.
+Thanks Piotr Narewski for responding to my report and fixing the bug so quickly. Also, he told me to go ahead and disclosure it.
 
 
 
