@@ -1,4 +1,4 @@
-# Gocoin incorrectly parsing `OP_0NOTEQUAL`
+# [DISCLOSURE] Gocoin incorrectly parsing `OP_0NOTEQUAL`
 
 Gocoin is a full Bitcoin solution written entirely from scratch in Go language with zero dependencies, according to their website. Since it is a full node implementation, we thought it would be good to have it on `bitcoinfuzz`, especially for the target that evaluates Bitcoin scripts. 
 
@@ -35,7 +35,3 @@ As can be seen, it was using `pop` to get the element instead of using `popInt`,
 --------------------------------------
 
 Thanks Piotr Narewski for responding to my report and fixing the bug so quickly. Also, he told me to go ahead and disclosure it.
-
-
-
-

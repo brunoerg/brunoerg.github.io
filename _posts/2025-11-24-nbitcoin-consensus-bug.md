@@ -1,4 +1,6 @@
-We recently integrated NBitcoin into the script_eval target of bitcoinfuzz.This target performs differential fuzzing of Bitcoin script evaluation logic by comparing the behavior of EvalScript (or equivalent) implementations across different projects.Before adding NBitcoin, this target was already fuzzing Bitcoin Core and btcd.
+# [DISCLOSURE] NBitcoin incorrectly parsing `OP_NIP`
+
+We recently integrated NBitcoin into the script_eval target of bitcoinfuzz. This target performs differential fuzzing of Bitcoin script evaluation logic by comparing the behavior of EvalScript (or equivalent) implementations across different projects.Before adding NBitcoin, this target was already fuzzing Bitcoin Core and btcd.
 
 Shortly after starting the fuzzing campaign — thanks to an already good corpus — we encountered a crash with the following script:
 
@@ -42,4 +44,3 @@ Timeline:
 2025-10-23 - NBitcoin 9.0.3 is released
 
 *Note: There is no known node implementation using NBitcoin, so there is no risk of chain split. That's why we're making it public.*
-

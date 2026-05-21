@@ -1,4 +1,4 @@
-# 2 DoS vulnerabilities on Floresta
+# [DISCLOSURE] 2 DoS vulnerabilities on Floresta
 
 I just discovered and reported 2 DoS vulnerabilities that affect the Floresta software. 
 The first one is regarding a large memory allocation that is done when allocating the header from a V1 message. I noticed that when the V2 (BIP324) handshake fails, it falls back to the V1. 

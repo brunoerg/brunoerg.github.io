@@ -1,4 +1,4 @@
-# Gocoin incorrectly parsing `OP_PUSHDATA4`
+# [DISCLOSURE] Gocoin incorrectly parsing `OP_PUSHDATA4`
 
 Gocoin is a full Bitcoin solution written entirely from scratch in Go language with zero dependencies, according to their website. We are differentially fuzzing its `VerifyTxScript` function against Bitcoin Core's `VerifyScript`. These functions are consensus critical and they are responsible for verifying `scriptPubKey` and `scriptSig`.
 
@@ -68,6 +68,3 @@ The issue is that gocoin was using `Uint16` in the context of `OP_PUSHDATA4` ins
 --------------------------------------
 
 Thanks Piotr Narewski for responding to my report and fixing the bug so quickly. Also, he told me to go ahead and disclosure it.
-
-
-
